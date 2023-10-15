@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="width=373, user-scalable=no ">
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<title>Mars Mission | Nasa App Challenge</title>
+<link rel="icon" href="favicon.ico"/>
+<link rel="icon" href="https://assets.spaceappschallenge.org/media/images/favicon2x.2e16d0ba.fill-192x192.png"/>
+<meta property="og:image" content="https://assets.spaceappschallenge.org/media/images/OpenGraph_Image-Alt_1.width-440.jpegquality-60.png"/>
+<meta name="theme-color" content="#000000">
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+#loaderBG {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #000000;
+	z-index: 400;
+}
+
+#hideBG {
+	z-index: 2;
+	-webkit-backdrop-filter: blur(16px);
+	backdrop-filter: blur(16px);
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #000000;
+	z-index: 1;
+	display: none;
+	opacity: 0.8;
+}
+
+.loaderStyle,
+.loaderStyle2 {
+	display: inline-block;
+	position: absolute;
+	top: 50vh;
+	left: 50vw
+}
+
+body{
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #000000;
+overflow: hidden;
+width: 100vw;
+height: 100vh;
+}
+
+.loaderStyle {
+	width: vminpx;
+	height: vminpx;
+	margin-top: -40vmin;
+	margin-left: -40vmin;
+	z-index: 401
+}
+
+.loaderStyle:after {
+	content: " ";
+	display: block;
+	width: 64vmin;
+	height: 64vmin;
+	margin: 8vmin;
+	border-radius: 50%;
+	border: 0.8vmin solid #fff;
+	border-color: #fff transparent;
+	animation: 1.2s linear infinite loaderStyle
+}
+
+.loaderStyle2 {
+	width: 60vmin;
+	height: 60vmin;
+	margin-top: -30vmin;
+	margin-left: -30vmin;
+	z-index: 402
+}
+
+.loaderStyle2:after {
+	content: " ";
+	display: block;
+	width: 52vmin;
+	height: 52vmin;
+	margin: 4vmin;
+	border-radius: 50%;
+	border: 0.8vmin solid #fff;
+	border-color: #fff transparent;
+	animation: 1.2s linear infinite loaderStyle2
+}
+
+.loaderStyle2:after,
+.loaderStyle:after {
+	box-shadow: inset 0 0 2px #ffe9e9, 0 0 2px #ffe9e9
+}
+
+@keyframes loaderStyle {
+	0% {
+		transform: rotate(0)
+	}
+
+	100% {
+		transform: rotate(360deg)
+	}
+}
+
+@keyframes loaderStyle2 {
+	0% {
+		transform: rotate(0)
+	}
+
+	100% {
+		transform: rotate(-360deg)
+	}
+}
+
+#logoIMG {
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+	animation: jump-and-fall 3s ease-in-out;
+	animation-iteration-count: infinite;
+	margin-left: -10vmin;
+	margin-top: -10vmin;
+	width: 20vmin;
+	height: 20vmin;
+
+}
+@keyframes jump-and-fall2{10%,30%{transform:rotate3d(0,0,0,0)}20%{transform:rotate3d(0,0,45deg,0)}}@keyframes jump-and-fall{0%,100%,40%,60%{transform:translate3d(0,0,0) rotate3d(0,0,0,0)}20%{transform:translate3d(0,0,0) rotate3d(0,1,0,0)}30%{transform:translate3d(0,-20px,0) rotate3d(0,0,0,0)}50%{transform:translate3d(0,-7px,0) rotate3d(0,0,0,0)}70%{transform:translate3d(0,5px,0) rotate3d(1,1,-.1,90deg)}90%{transform:translate3d(0,-5px,0) rotate3d(-1,1,.1,90deg)}}
+
+</style>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="css/style_ui.css">
+
+
+
+
+
+<script src="app/babylon.max.js"></script>
+<script src="app/babylonjs.loaders.min.js"></script>
+
+<!-- <script src="app/appbild.js"></script> -->
+
+<script src="app/appState.js"></script>
+<script src="app/mission_data_json.js"></script>
+<script src="app/app.js"></script>
+<script src="app/ui.js"></script>
+<script src="app/sceneCreate.js"></script>
+<script src="app/sceneLoadAssets.js"></script>
+<script src="app/sceneAffterAssetsLoaded.js"></script>
+<script src="app/sceneRenderLoop.js"></script>
+<script src="app/sceneUpdate.js"></script>
+
+
+
+<!--
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+!-->
+
+</head>
+
+
+
+<body>
+<canvas id="renderCanvas" style="display: block;"></canvas>
+
+
+
+<div id="topHeader">Earth-Mars<br/>cycler</div>
+
+<div id="language_en">EN</div>
+<div id="language_tj">TJ</div>
+<div id="language_ru">RU</div>
+
+
+
+<div id="bottomHeader">The project was created for Nasa Space App challenge. Team: Osiris the best / Dushanbe, Tajikistan</div>
+
+
+
+
+
+
+<div id="story_elements" style="">
+
+<div id="slide0">
+<img src="css/first_mars_photo_1965.png" style="position: absolute;
+width: 30vmin;
+height: 30vmin;
+top: -30vh;
+">
+
+<div class="slideOverflow">
+
+<div id="slide0_div_en">
+In the grand tapestry of the cosmos, there exists a celestial highway - a route through the vast expanse of space that promises to connect our humble blue planet to Mars. This celestial bridge, known as the "Cycler to Mars".
+<br><br>
+The Red Planet and our own Earth are celestial dancers, twirling in their respective orbits around the Sun, and a distance betweent it is always different! The flight to Mars is an extremely difficult journey, requiring a lot of costs, fuel and time, and astrophysicists are making it more efficient by calculating its path.
+<br><br>
+Mars cyclers take advantage of the unique rhythms of the cosmos. They follow a trajectory that allows them to "cycle" between Earth and Mars, riding the gravitational currents like cosmic surfers! It is not just a spaceship; it's a symbol of our relentless spirit, a testament to our determination to reach for the stars, and a promise of a brighter future for humanity.
+</div>
+
+<div id="slide0_div_ru" style="display: none;">
+В великом бездне космоса существует маршрут, который обещает соединить нашу голубую планету с Марсом. Этот небесный мост известен как Марсианский циклер.
+<br><br>
+Красная Планета и наша Земля — небесные танцоры, вращающиеся по своим орбитам вокруг Солнца, и расстояние между ними всегда разное! Полет на Марс — чрезвычайно сложное путешествие, требующее больших затрат, топлива и времени, и астрофизики делают его более эффективным, рассчитывая его путь.
+<br><br>
+Марсианские циклеры используют уникальные ритмы космоса. Они следуют по траектории, которая позволяет им «циркулировать» между Землей и Марсом, оседлав гравитационные потоки, как космические серфенгисты! Это не просто космический корабль, это символ нашего неустанного духа, свидетельство нашей решимости достичь звезд и обещание светлого будущего для человечества.
+</div>
+
+<div id="slide0_div_tj" style="display: none;">
+In the grand tapestry of the cosmos, there exists a celestial highway - a route through the vast expanse of space that promises to connect our humble blue planet to the fiery red jewel known as Mars. This celestial bridge, known as the "Cycler to Mars".
+<br><br>
+The Red Planet and our own Earth are celestial dancers, twirling in their respective orbits around the Sun, and a distance betweent it is always different! The flight to Mars is an extremely difficult journey, requiring a lot of costs, fuel and time, and astrophysicists are making it more efficient thanks to calculations.
+<br><br>
+Mars cyclers take advantage of the unique rhythms of the cosmos. They follow a trajectory that allows them to "cycle" between Earth and Mars, riding the gravitational currents like cosmic surfers! It is not just a spaceship; it's a symbol of our relentless spirit, a testament to our determination to reach for the stars, and a promise of a brighter future for humanity.
+</div>
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="slide1" >
+<div class="slideOverflow">
+<div id="slide1_div_en">
+Today is November 19, 2037, Osiris company is pleased to welcome you on board our Spaceship! Mars cyclers, like cosmic taxis, execute elegantly maneuvers, sweeping in close proximity to Earth to collect both eager passengers and precious cargo. Shuttles and space elevators diligently play their roles, facilitating the seamless transfer of goods and travelers to it, ensuring their timely refueling before embarking on their cosmic odyssey.
+</div>
+
+<div id="slide1_div_ru" style="display: none;"> Сегодня 19 ноября 2037 года, Компания Озирис рада приветствовать вас на борту нашего корабля!
+Марсианские циклеры, подобно космическим такси, выполняют элегантные маневры, проносясь в непосредственной близости от Земли, чтобы забрать как нетерпеливых пассажиров, так и ценный груз. Шаттлы и космические лифты старательно выполняют свою роль, облегчая беспрепятственную доставку грузов и путешественников на них, обеспечивая их своевременную дозаправку перед тем, как отправиться в космическую одиссею.
+</div>
+
+<div id="slide1_div_tj" style="display: none;">
+</div>
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div id="slide2">
+<div class="slideOverflow">
+  <div id="slide2_div_en">
+    Сегодня 19 ноября 2037 года, Компания Озирис рада приветствовать вас на борту нашего корабля!
+    Марсианские циклеры, подобно космическим такси, выполняют элегантные маневры, проносясь в непосредственной близости от Земли, чтобы забрать как нетерпеливых пассажиров, так и ценный груз.
+  </div>
+
+  <div id="slide2_div_ru" style="display: none;">
+    Пролетая Луну, мы можем это делать безопаснее, чем это было во времена Аполлон 11 —первой миссии человека на Луну Аполлон 11, 20 июля 1969 года. Ведь тогда, Ричард Никсон, занимавший в то время пост президента США, подготовил речь на случай, если астронавты "Аполлона-11" не смогут вернуться с Луны. К счастью, ему не пришлось ее произносить.
+    <br>
+    И уж точно, мы можем лететь с комфортом на нашем корабле. <br>
+    Тогда, чтобы сэкономить энергию во время пребывания на Луне, астронавты спали по очереди. Пока один исследовал, двое других отдыхали в лунном модуле.
+  </div>
+
+  <div id="slide2_div_tj" style="display: none;">
+
+  </div>
+</div>
+</div>
+
+<div id="slide3">
+  <div id="slide3_div_en">
+  </div>
+
+  <div id="slide3_div_ru" style="display: none;">
+    Проживание на корабле.
+        <br>
+    Компания Оcирис настоятельно вам рекомендует не пренебрегать разработанной нами программы тренировок и питания.
+    Находясь в космосе, ваши мышцы теряют тонус без действия гравитации и вы становитесь слабее.
+        <br>
+    Соблюдение питания позволит вам получить питательные вещества при ограниченном разнообразии пищи, что защитит здоровье ваших костей и предотвращает увеличение веса.
+  </div>
+
+  <div id="slide3_div_tj" style="display: none;">
+  </div>
+</div>
+
+<div id="slide4">
+  <div id="slide4_div_en">
+    Dance of Phobos and Deimos
+      <br>
+    We are getting closer and closer to the final path.
+    Mars is not far away.
+      <br>
+    Among the silent expanses, Phobos and Deimos, the guardians of Mars, dance. Higher up, on the Martian surface, artificial satellites are circling. Reconnaissance Orbiter captures its beauty, while Mars Express explores its depths. Odyssey transmits messages, InSight listens for secrets, and MAVEN searches for ancient secrets. Together they create a symphony of Martian discoveries. It's amazing that they haven't left their resource yet!
+
+  </div>
+
+  <div id="slide4_div_ru" style="display: none;">
+  </div>
+  Танец Фобос и Деймос<br>
+  <br>
+  Мы все ближе и ближе к конечному пути.
+  Вот и недалеко Марс.
+  <br>
+  Среди безмолвных просторов танцуют Фобос и Деймос, хранители Марса. Выше, на марсианском полотне, кружат искусственные спутники. Reconnaissance Orbiter запечатляет его красоту, а Mars Express исследует его глубины. Odyssey передает сообщения, InSight выслушивает секреты, а MAVEN ищет древние секреты. Вместе они создают симфонию марсианских открытий. Удивительно, что они все еще не вышли из своего ресурса!
+  <div id="slide4_div_tj" style="display: none;">
+  </div>
+</div>
+
+
+<div id="slide5">
+<div class="slideOverflow">
+  <div id="slide5_div_en">
+  </div>
+
+  <div id="slide5_div_ru" style="display: none;">
+  </div>
+
+  <div id="slide5_div_tj" style="display: none;">
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div id="arrow1Div">
+<img src="css/slider_arrow.svg" id="arrow1" />
+</div>
+<div id="arrow2Div">
+<img src="css/slider_arrow.svg" id="arrow2" />
+</div>
+
+
+
+
+
+<div id="timelineDiv"></div>
+
+
+<div id="timelinePoint1Big"></div>
+<div id="timelinePoint2Big"></div>
+<div id="timelinePoint3Big"></div>
+<div id="timelinePoint4Big"></div>
+<div id="timelinePoint5Big"></div>
+
+
+<div id="timelinePoint1"></div>
+<div id="timelinePoint2"></div>
+<div id="timelinePoint3"></div>
+<div id="timelinePoint4"></div>
+<div id="timelinePoint5"></div>
+
+
+</div>
+
+
+
+
+
+<div id="dataYear"></div>
+<div id="dataMonth"></div>
+<div id="dataDay"></div>
+
+
+
+<div id="containerMenu">
+<div id="camera1button">Solar System View (Story Mode)</div>
+<div id="camera2button">Cabine View (Fly Simulator Mode)</div>
+<div id="buttonAbout">About + Github</div>
+</div>
+
+
+
+<div class="" id="loaderBG" style="">
+<img src="css/SpaceAppsLogo.png" id="logoIMG" class="logoText"/>
+</div>
+<div class="" id="hideBG" style="display: none;" onclick="formClose(); helpClose();"></div>
+<div class="loaderStyle" id="loader1"></div>
+<div class="loaderStyle2" id="loader2"></div>
+
+
+<script>
+function onOrientationChange() {
+let width  = document.documentElement.clientWidth;
+let height = document.documentElement.clientHeight;
+let landscape = width > height;
+let viewportmeta = document.querySelector('meta[name="viewport"]');
+
+let ua = window.navigator.userAgent;
+let iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+let webkit = !!ua.match(/WebKit/i);
+let iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+
+
+	if(landscape)
+	{
+	// adding zoom 0.5
+	//if (width < 900)
+	viewportmeta.content = "width=device-width, initial-scale=0.33, user-scalable=no";
+	if (iOSSafari == true) document.getElementById("canvas2Ddiv").style.marginTop = '0';
+
+	}
+	else
+	{
+//	document.getElementById('optionsBox').style.display='none';
+
+	//if (width < 980)
+	viewportmeta.content = "width=373, user-scalable=no";
+	if (iOSSafari == true) document.getElementById("canvas2Ddiv").style.marginTop = '28px';
+
+	}
+	if (typeof scale2d === 'function'){scale2d();}
+	}
+	window.addEventListener('orientationchange', onOrientationChange);
+	window.addEventListener('resize', onOrientationChange);
+
+
+	onOrientationChange();
+</script>
+
+<script>
+
+</script>
+
+
+<div id="imagePreloader" style="z-index:-3; position: absolute; top:-1; left: -1; width:1px; height: 1x; overflow: hidden;">
+<img src="css/SpaceAppsLogo.png" />
+<audio src="models/sound_morok_znak.mp3" id="soundBG" type="audio/mpeg"></audio>
+</div>
+
+
+</body>
+</html>
