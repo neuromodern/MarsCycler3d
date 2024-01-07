@@ -1,7 +1,5 @@
-<p align="center">
-  Mars-Earth Cyclic path visualization and VR journey
-  https://neuromodern.github.io/MarsCycler3d/
-</p>
+<p align="center">  Mars-Earth Cyclic path visualization and VR journey</p>
+<p align="center">  RUN ONLINE: https://neuromodern.github.io/MarsCycler3d/</p>
 
 <p align="center">
 <img src="./.github/logo.png" width="250px" alt="NasaApp">
