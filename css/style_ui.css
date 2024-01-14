@@ -193,13 +193,13 @@ left: 105vw;
     overflow-y: hidden;
   }
 
+.babylonVRicon
+{
+left: calc(373px - 5vmin - 5vw) !important;	
+z-index:3000 !important;
+border: 1px solid #FF00FF;
+}
 
-
-  .xr-button-overlayFullScreen
-  {
-top: calc(100vh - 58px) !important;
-
-  }
 
 
 }
@@ -212,18 +212,17 @@ bottom: auto !important;
 top: 2vmin !important;
 height: 42px !important;
 width: 42px !important;
-right: 12px !important;
+//right: 12px !important;
 }
 
 .babylonVRicon
 {
-
-
 position: absolute;
 height: 5vmin !important;
-width: 5vmin !important; margin: 0;
+width: 5vmin !important; 
+margin: 0;
 top: 5vw !important;
-left: calc(100vw - 5vmin - 5vw) !important;
+left: calc(100vw - 5vmin - 5vw);
 border: 1px solid #ffffff;
 cursor: pointer;
 }
