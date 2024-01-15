@@ -175,57 +175,7 @@ left: 105vw;
 }
 
 
-@media screen and ( max-width: 373px ){
 
-
-  @-ms-viewport {
-    width: 373px;
-  }
-  @-o-viewport {
-    width: 373px;
-  }
-  @viewport {
-    width: 373px;
-  }
-
-  html, body {
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
-
-.babylonVRicon
-{
-left: calc(373px - 5vmin - 5vw) !important;	
-z-index:3000 !important;
-border: 1px solid #FF00FF;
-}
-
-
-
-}
-
-
-
-.xr-button-overlay
-{
-bottom: auto !important;
-top: 2vmin !important;
-height: 42px !important;
-width: 42px !important;
-//right: 12px !important;
-}
-
-.babylonVRicon
-{
-position: absolute;
-height: 5vmin !important;
-width: 5vmin !important; 
-margin: 0;
-top: 5vw !important;
-left: calc(100vw - 5vmin - 5vw);
-border: 1px solid #ffffff;
-cursor: pointer;
-}
 
 #arrow1Div
 {
@@ -267,8 +217,6 @@ cursor: pointer;
 
 
 
-
-
 #slide0
 {
 
@@ -305,48 +253,6 @@ overflow-y: scroll;
 
 
 
-
-@media (orientation: portrait) {
-#slide0, #slide1,#slide2,#slide3,#slide4,#slide5,#slide6,#slide7
-{
-color: #ffffff;
-position: absolute;
-width: 90vw !important;
-top: 65vh !important;
-height: 25vh !important;
-font-size: 1.2vh !important;
-}
-
-.slideOverflow
-{
-  color: #ffffff;
-  position: absolute;
-  width: 90vw !important;
-  height: 25vh !important;
-  font-size: 1.2vh !important;
-overflow-y: scroll;
-}
-
-
-
-
-#language_en{
-left: calc(60vw + 0px) !important;
-font-size: 2.5vmin !important;
-}
-#language_es{
-left: calc(60vw + 6vmin) !important;
-font-size: 2.5vmin !important;
-}
-#language_ar{
-left: calc(60vw + 12vmin) !important;
-font-size: 2.5vmin !important;
-}
-
-}
-
-
-
 #language_en{
 color: #FFF;
 position: absolute;
@@ -378,4 +284,106 @@ font-size: 2vmin;
 width: 4vmin;
 height: 5vmin;
 cursor: pointer;
+}
+
+
+
+
+@media screen and ( max-width: 373px ){
+
+
+  @-ms-viewport {
+    width: 373px;
+  }
+  @-o-viewport {
+    width: 373px;
+  }
+  @viewport {
+    width: 373px;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+.babylonVRicon
+{
+left: calc(373px - 5vmin - 5vw) !important;	
+z-index:3000 !important;
+border: 1px solid #FF00FF;
+}
+
+
+
+}
+
+
+
+
+.xr-button-overlay
+{
+bottom: auto !important;
+top: 2vmin !important;
+height: 42px !important;
+width: 42px !important;
+//right: 12px !important;
+}
+
+.babylonVRicon
+{
+position: absolute;
+height: 5vmin !important;
+width: 5vmin !important; 
+margin: 0;
+top: 5vw !important;
+left: calc(100vw - 5vmin - 5vw);
+border: 1px solid #ffffff;
+cursor: pointer;
+}
+
+
+@media (orientation: portrait) {
+
+#htmlDate {
+ top: 18vw !important;
+}	
+	
+	
+#slide0, #slide1,#slide2,#slide3,#slide4,#slide5,#slide6,#slide7
+{
+color: #ffffff;
+position: absolute;
+width: 90vw !important;
+top: 55vh !important;
+height: 25vh !important;
+font-size: 1.2vh !important;
+}
+
+.slideOverflow
+{
+  color: #ffffff;
+  position: absolute;
+  width: 90vw !important;
+  height: 25vh !important;
+  font-size: 1.2vh !important;
+overflow-y: scroll;
+}
+
+
+
+
+#language_en{
+left: calc(60vw + 0px) !important;
+font-size: 2.5vmin !important;
+}
+#language_es{
+left: calc(60vw + 6vmin) !important;
+font-size: 2.5vmin !important;
+}
+#language_ar{
+left: calc(60vw + 12vmin) !important;
+font-size: 2.5vmin !important;
+}
+
 }
