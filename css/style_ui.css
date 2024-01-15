@@ -83,9 +83,9 @@ font-weight: 200;
 
 #htmlDate
 {
-width: 50vmin;
-height:25vmin;
-top: 14vw;
+width: 15vmin;
+height: 3vmin;
+top: calc(5vw + 12vmin);
 left: 5vw;
 position: absolute;
 font-size: 2vmin;
