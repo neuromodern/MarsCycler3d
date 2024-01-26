@@ -307,14 +307,14 @@ cursor: pointer;
     overflow-y: hidden;
   }
 
-.babylonVRicon
+.babylonVRicon2
 {
 left: 335px !important;	
 z-index:3000 !important;
 border: 1px solid #FF00FF;
 }
 
-.xr-button-overlay
+.xr-button-overlay2
 {
 left: 335px !important;		
 }	
@@ -324,7 +324,7 @@ left: 335px !important;
 
 
 
-.xr-button-overlay
+.xr-button-overlay2
 {
 bottom: auto !important;
 top: 5vw !important;
@@ -334,16 +334,25 @@ width: 5vmin !important;
 //right: 12px !important;
 }
 
-.babylonVRicon
+.babylonVRicon, .xr-button-overlay
 {
-position: absolute;
-height: 5vmin !important;
-width: 5vmin !important; 
-margin: 0;
-top: 5vw !important;
-left: calc(100vw - 5vmin - 5vw) !important;
-border: 1px solid #ffffff;
+
 cursor: pointer;
+
+ position: absolute; 
+ height: 5vmin !important; 
+ width: 5vmin !important; 
+ margin: 0; 
+ top: 5vw !important; 
+ left: calc(100vw - 5vmin - 5vw); 
+ border: 1px solid #ffffff; 
+ background-image: url(vrButton.png); 
+ background-size: 100%; 
+ background-repeat:no-repeat; 
+ background-position: center; 
+ outline: none; 
+ transition: transform 0.125s ease-out;
+
 }
 
 
